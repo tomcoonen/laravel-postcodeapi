@@ -16,10 +16,13 @@ class PostcodeApiNu extends Provider {
     protected function request()
     {
         $client = $this->getHttpClient();
-        $client->setDefaultOption('headers', ['Api-Key' => $this->getApiKey()]);
-        $response = $client->get($this->getRequestUrl())->json();
+        $response = $client->request('GET', $this->getRequestUrl(), [
+            'headers' => [
+                    'Api-Key' => $this->getApiKey()
+                ]
+        ]);
 
-        return $response;
+        return json_decode($response->getBody(), true);
     }
 
     /**
