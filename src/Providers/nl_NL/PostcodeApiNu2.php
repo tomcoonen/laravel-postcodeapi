@@ -37,6 +37,10 @@ class PostcodeApiNu2 extends Provider {
         $response = $this->request();
 
         $address = new Address();
+
+        if (!isset($response['_embedded']['addresses'][0]))
+            return $address;
+
         $address
             ->setStreet($response['_embedded']['addresses'][0]['street'])
             ->setTown($response['_embedded']['addresses'][0]['city']['label'])
@@ -48,7 +52,9 @@ class PostcodeApiNu2 extends Provider {
         return $address;
     }
 
-    public function findByPostcode($postCode) {}
+    public function findByPostcode($postCode) {
+        return $this->find($postCode);
+    }
 
     /**
      * @param $postCode
@@ -64,6 +70,10 @@ class PostcodeApiNu2 extends Provider {
         $response = $this->request();
 
         $address = new Address();
+
+        if (!isset($response['_embedded']['addresses'][0]))
+            return $address;
+
         $address
             ->setHouseNo($response['_embedded']['addresses'][0]['number'])
             ->setStreet($response['_embedded']['addresses'][0]['street'])

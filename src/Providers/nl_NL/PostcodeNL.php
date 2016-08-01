@@ -40,6 +40,10 @@ class PostcodeNL extends Provider {
         $response = $this->request();
 
         $address = new Address();
+
+        if (!isset($response['street']))
+            return $address;
+
         $address
             ->setStreet($response['street'])
             ->setTown($response['city'])

@@ -35,6 +35,10 @@ class PostcodeData extends Provider {
         $response = $this->request();
 
         $address = new Address();
+
+        if (!isset($response['details'][0]))
+            return $address;
+
         $address
             ->setStreet($response['details'][0]['street'])
             ->setHouseNo($houseNumber)

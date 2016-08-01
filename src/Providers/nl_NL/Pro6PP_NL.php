@@ -42,6 +42,9 @@ class Pro6PP_NL extends Provider {
         return $address;
     }
 
-    public function findByPostcode($postCode) {}
+    public function findByPostcode($postCode) {
+        return $this->find($postCode);
+    }
+
     public function findByPostcodeAndHouseNumber($postCode, $houseNumber) {}
 }

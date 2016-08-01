@@ -41,7 +41,9 @@ class Pstcd extends Provider {
         return $address;
     }
 
-    public function findByPostcode($postCode){}
+    public function findByPostcode($postCode){
+        return $this->find($postCode);
+    }
 
     /**
      * @param $postCode
