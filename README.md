@@ -28,7 +28,7 @@ php artisan vendor:publish
 #### Default
 ```php
 $postCode1 = PostcodeApi::create('PostcodeData')->findByPostcodeAndHouseNumber('1118CP', '202');
-$postCode2 = PostcodeApi::create('PostcodeApiNu')->find('1118CP');
+$postCode2 = PostcodeApi::create('PostcodeApiNu2')->find('1118CP');
 
 var_dump($postCode1);
 var_dump($postCode2);
@@ -36,7 +36,7 @@ var_dump($postCode2);
 #### Route
 ```php
 Route::get('/{postCode}', function($postCode) {
-    $postCode1 = PostcodeApi::create('PostcodeApiNu')->find($postCode);
+    $postCode1 = PostcodeApi::create('PostcodeApiNu2')->find($postCode);
     
     return Response::json($postCode1->toArray(), 200, [], JSON_PRETTY_PRINT);
 });
@@ -56,7 +56,6 @@ var_dump($postCode3);
 
 ### Providers
 * [PostcodeNL](http://www.postcode.nl)
-* [PostcodeApiNu](http://www.postcodeapi.nu/)
 * [PostcodeApiNu2](http://www.postcodeapi.nu/) API version 2.0
 * [PostcodeData](http://www.postcodedata.nl/)
 * [Pro6PP_NL](https://www.pro6pp.nl)
